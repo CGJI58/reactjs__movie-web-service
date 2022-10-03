@@ -1,23 +1,21 @@
-import Button from "./Button";
-import styles from "./App.module.css";
 import { useState, useEffect } from "react";
 
-function App() {
-  const [counter, setValue] = useState(0);
-
-  const onClickCounter = () => setValue((prev) => prev + 1);
-
-  console.log("I render everytime...");
-
+const Hello = () => {
   useEffect(() => {
-    console.log("Call the API...");
+    console.log("Hi! :)");
+    return () => console.log("bye.. :(");
   }, []);
+  return <h1>Hello</h1>;
+};
+
+function App() {
+  const [showing, setShowing] = useState(false);
+  const onClickBtn = () => setShowing((prev) => !prev);
 
   return (
     <div>
-      <button onClick={onClickCounter}>{counter}</button>
-      <h1 className={styles.title}>Welcome back!</h1>
-      <Button text={"Continue"} />
+      {showing ? <Hello /> : null}
+      <button onClick={onClickBtn}>{showing ? "Hide" : "Show"}</button>
     </div>
   );
 }
