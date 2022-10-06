@@ -6,13 +6,11 @@ function App() {
 
   const onSubmit = (event) => {
     event.preventDefault();
-    console.log("submit");
     if (todo === "") {
       return;
     }
     setTodos((currentArray) => [todo, ...currentArray]);
     setTodo("");
-    console.log(todos);
   };
 
   const onChange = (event) => {
@@ -30,6 +28,12 @@ function App() {
           onChange={onChange}
         />
         <button>Add</button>
+        <hr />
+        <ul>
+          {todos.map((item, index) => (
+            <li key={index}>{item}</li>
+          ))}
+        </ul>
       </form>
     </div>
   );
